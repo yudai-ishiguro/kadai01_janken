@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="css/sample.css">
+    <title>じゃんけん</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>じゃんけん</h1>
+    </header>
+
+    <main>
+        <div id="direction">グー、チョキ、パーを選んでね</div>
+        <ul>
+            <li id="gu_btn">グー</li>
+            <li id="cho_btn">チョキ</li>
+            <li id="par_btn">パー</li>
+        </ul>
+        <div>コンピュータ<span id="ru_ready">が出す手は</span>「<span id="pc_hands">なに？</span>」</div>
+        <div id="shoubu">いざ勝負！</div>
+        <div id="judgement">（結果の表示）</div>
+    </main>
+
+    <footer>
+        <button id="btn"><h2>もう一回やる</h2></button>
+    </footer>
+    
+    <script>
+     // 定義 グーは１ チョキは２ パーは３ とする 
+
+    //  ボックスを隠す
+    $("#shoubu").hide()
+    $("#judgement").hide()
+
+    // グー・チョキ・パーのボタンへのマウスオーバーに連動した表示
+
+// 実験
+// $(document).ready(function(){
+//     $("#gu_btn, #cho_btn, #par_btn").one(
+//             "mouseenter",function(){
+//                 $("#shoubu").show();
+//             $("#shoubu").off("mouseenter");
+//     });
+// });
+
+      $("#gu_btn, #cho_btn, #par_btn").on({
+            "mouseenter":function(){
+                $("#shoubu").show();
+            },
+            "mouseleave": function(){
+                $("#shoubu").hide();
+            }
+         });
+
+
+        // $("#gu_btn, #cho_btn, #par_btn").hover(
+        //     function(){$("#judgement").show();},
+        //     // function(){$("#judgement").hide();});
+        //     function(){if($("#judgement").is(":visible")){
+        //     $("#judgement").hide();}
+        //     // }else{
+        //     //     $("#judgement").hide();
+        //     // }
+        // });
+ 
+    // チョボタンにホバーで表示
+    // $(document).ready(function()
+    //     {$("#cho_btn").hover(function()
+    //     {$("#judgement").fadeIn();},
+    //     function(){$("#judgement").fadeOut();}
+    //     );}
+    //     );
+    // パーボタンにホバーで表示
+    // $(document).ready(function()
+    //     {$("#par_btn").hover(function()
+    //     {$("#judgement").fadeIn();},
+    //     function(){$("#judgement").fadeOut();}
+    //     );}
+    //     );
+
+    //  あらかじめリロード用ボタンを隠しておく
+    $("#btn").hide()
+   
+    // 自分がグーを出した時の処理
+    $("#gu_btn").on("click",function(){
+    $("#pc_hands").css("color","#0066cc");
+    //       $("#gu_btn, #cho_btn, #par_btn").on({
+    //         "mouseenter":function(){
+    //             $("#shoubu").show();
+    //         },
+    //         "mouseleave": function(){
+    //             $("#shoubu").hide();
+    //         }
+    // });
+    const r = Math.ceil (Math.random()*3);
+    let view ="";
+    if(r == 1){
+        view = 'グー';
+        // あいこの時の処理
+        $("#shoubu").hide();
+        $("#judgement").show(); 
+        $("#judgement").html('あいこ');
+        $("#direction").empty().text("もう一回").css("color","#ff0000");}
+    if(r == 2){
+        view = 'チョキ';
+        // 勝った時の処理
+        $("#shoubu").hide();       
+        $("#judgement").show();
+        $("#judgement").html('勝ち!');
+        $("#direction").css("color","#ccc");
+        $("#btn").show().fadeOut(1000).fadeIn(1000).fadeOut(1000).fadeIn(1000).fadeOut(1000).fadeIn(1000);}
+    if(r == 3){
+        view = 'パー';
+        // 負けた時の処理
+        $("#shoubu").hide();
+        $("#judgement").show();
+        $("#judgement").html('負け');
+        $("#direction").css("color","#ccc");
+        $("#btn").show().fadeOut(1000).fadeIn(1000).fadeOut(1000).fadeIn(1000).fadeOut(1000).fadeIn(1000);} 
+    $("#pc_hands").html(view);
+    $("#ru_ready").html("の出した手は");
+   })
+ 
+    // 自分がチョキを出した時の処理
+    $("#cho_btn").on("click",function(){
+    $("#pc_hands").css("color","#0066cc");
+    const r = Math.ceil (Math.random()*3);
+    let view ="";
+    if(r == 1){
+        view = 'グー';
+        // 負けた時の処理
+        $("#shoubu").hide();
+        $("#judgement").show();
+        $("#judgement").html('負け');
+        $("#direction").css("color","#ccc");
+        $("#btn").show().fadeOut(1000).fadeIn(1000).fadeOut(1000).fadeIn(1000).fadeOut(1000).fadeIn(1000);}
+    if(r == 2){
+        view = 'チョキ';
+        // あいこの時の処理
+        $("#shoubu").hide();
+        $("#judgement").show(); 
+        $("#judgement").html('あいこ');
+        $("#direction").empty().text("もう一回").css("color","#ff0000");}
+     if(r == 3){
+        view = 'パー';
+        // 勝った時の処理
+        $("#shoubu").hide();
+        $("#judgement").show();
+        $("#judgement").html('勝ち!');
+        $("#direction").css("color","#ccc");
+        $("#btn").show().fadeOut(1000).fadeIn(1000).fadeOut(1000).fadeIn(1000).fadeOut(1000).fadeIn(1000);} 
+    $("#pc_hands").html(view);
+    $("#ru_ready").html("の出した手は");
+   })   
+
+    // 自分がパーを出した時の処理
+    $("#par_btn").on("click",function(){
+    $("#pc_hands").css("color","#0066cc");
+    const r = Math.ceil (Math.random()*3);
+    let view ="";
+    if(r == 1){
+        view = 'グー';
+        // 勝った時の処理
+        $("#shoubu").hide();
+        $("#judgement").show();
+        $("#judgement").html('勝ち!');
+        $("#direction").css("color","#ccc");
+        $("#btn").show().fadeOut(1000).fadeIn(1000).fadeOut(1000).fadeIn(1000).fadeOut(1000).fadeIn(1000);}
+    if(r == 2){
+        view = 'チョキ';
+        // 負けた時の処理
+        $("#shoubu").hide();
+        $("#judgement").show();
+        $("#judgement").html('負け');
+        $("#direction").css("color","#ccc");
+        $("#btn").show().fadeOut(1000).fadeIn(1000).fadeOut(1000).fadeIn(1000).fadeOut(1000).fadeIn(1000);}
+    if(r == 3){
+        view = 'パー';
+        // あいこの時の処理
+        $("#shoubu").hide();
+        $("#judgement").show(); 
+        $("#judgement").html('あいこ');
+        $("#direction").empty().text("もう一回").css("color","#ff0000");} 
+    $("#pc_hands").html(view);
+    $("#ru_ready").html("の出した手は");
+   })   
+
+   $(document).ready(function(){
+    $("#btn").on("click", function(){
+        location.reload();
+    });
+   });
+
+    </script>
+</body>
+
+</html>

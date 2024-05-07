@@ -1,0 +1,104 @@
+body{
+    margin:0;
+    padding:0;
+    text-align:left;
+    font-size: 32px;
+}
+header{
+    background-color: #fff;
+    border-bottom: 1px dashed #0066cc;
+    text-align: center;
+}
+h1{margin: 0;
+}
+main{
+    background-color: #ccc;
+    height: 30vw;
+    padding-bottom: 20px;
+}
+footer{
+    background-color: #fff;
+    border-top:1px dashed #0066cc;
+    text-align: left;
+}
+p{
+    font-size:200%;
+    text-align: center;
+    border-bottom:1px solid #fff;
+    height:200px;
+}
+ul{
+    padding: 0;
+    margin: 16px 0px;
+    /* border-top: 1px solid #000000; */
+    display:table;  /* 定義 */
+    table-layout: fixed;
+    width:100%;
+}
+li{
+    list-style-type:none;
+    border: 1px solid #666;
+    background-color: gray;
+    color: #fff;
+    display:table-cell;  /* 定義 */
+    cursor: pointer;
+    text-align: center;
+}
+li:hover{
+    background: #0066CC;
+    color:#fff;
+}
+
+/* span{
+    color: #0066cc;
+} */
+
+#direction{
+    padding-top: 20px;
+}
+
+#shoubu{
+    /* z-index: 2; */
+    position:absolute; top:293px; left:485px; 
+    text-align: center;
+    width: 20vw;
+    height: 10vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 10vw;
+    /* display:table; */
+    /* padding:10px;
+    display:flex;
+    align-items:center; */
+    border: 1px solid #666;
+    background-color:gray;
+    color: #fff;
+}
+
+#judgement{
+    /* z-index: 1; */
+    position:absolute; top:293px; left:485px; 
+    text-align: center;
+    width: 20vw;
+    height: 10vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 10vw;
+    /* display:table; */
+    /* padding:10px;
+    display:flex;
+    align-items:center; */
+    border: 1px solid #666;
+    background-color:gray;
+    color: #fff;
+}
+
+#btn{
+    cursor: pointer;
+    margin: 20px;
+    /* font-size: 32px; */
+}
